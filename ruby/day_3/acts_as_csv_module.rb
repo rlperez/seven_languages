@@ -16,6 +16,25 @@ module ActsAsCsv
       read
     end
 
+    class CsvRow
+      attr_accessor :headers, :data
+
+      def initialize(headers, data)
+        @headers = headers
+        @data = data
+      end
+
+      def self.method_missing(name, *args)
+        @data[@headers.index(name.to_s)]
+      end
+    end
+
+    def each(&block)
+      @csv_contents.each do |row|
+        block.call CsvRow.new(@headers, row)
+      end
+    end
+
     def read
       @csv_contents = []
       filename = self.class.to_s.downcase + '.csv'
@@ -38,3 +57,4 @@ end
 csv = RubyCsv.new
 puts csv.headers.inspect
 puts csv.csv_contents.inspect
+csv.each {|row| puts row.one}
