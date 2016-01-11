@@ -1,5 +1,4 @@
 module ActsAsCsv
-# TODO Compare against last revision to figure out why this works and the previous one doesn't. 
   def self.included(base)
     base.extend ClassMethods
   end
@@ -57,4 +56,4 @@ end
 
 
 csv = RubyCsv.new
-csv.each { |row| puts row.date }
+csv.each { |row| puts row.usage }
