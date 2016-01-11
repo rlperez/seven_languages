@@ -12,7 +12,7 @@ module ActsAsCsv
   module InstanceMethods
 
     class CsvRow
-      def method_missing name, *args
+      def method_missing(name, *args)
         @contents[@headers.index(name.to_s)]
       end
 
