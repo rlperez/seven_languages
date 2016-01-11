@@ -30,8 +30,8 @@ module ActsAsCsv
     end
 
     def each(&block)
-      @csv_contents.each do |row|
-        block.call CsvRow.new(@headers, row)
+      @csv_contents.each do |csv_row|
+        yield(csv_row)
       end
     end
 
@@ -40,10 +40,10 @@ module ActsAsCsv
       filename = self.class.to_s.downcase + '.csv'
       file = File.new(filename)
 
-      @headers = file.gets.chomp.split(', ')
+      @headers = file.gets.chomp.split(',')
 
       file.each do |row|
-        @csv_contents << row.chomp.split(', ')
+        @csv_contents << CsvRow.new(@headers, row.chomp.split(', '))
       end
     end
   end
@@ -57,4 +57,4 @@ end
 csv = RubyCsv.new
 puts csv.headers.inspect
 puts csv.csv_contents.inspect
-csv.each {|row| puts row.one}
+csv.each {|row| puts row.type}
