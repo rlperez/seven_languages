@@ -1,8 +1,9 @@
 Fib := Object clone
 Fib recursive := method(n,
     if(n <= 0, 0,
-    if(n == 1, 1,
-      (Fib recursive(n - 1)) + (Fib recursive(n - 2)))
+      if(n == 1, 1,
+        (Fib recursive(n - 1)) + (Fib recursive(n - 2))
+      )
     )
   )
 
