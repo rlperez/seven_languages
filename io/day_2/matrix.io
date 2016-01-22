@@ -17,7 +17,14 @@ Matrix set := method(x, y, value,
 
 Matrix transpose := method(
   self map(reverse) reverse
-)
+  )
+
+Matrix write := method(path,
+  )
+
+Matrix read := method(path,
+  
+  )
 
 m := Matrix clone
 m := m dim(2,2)
