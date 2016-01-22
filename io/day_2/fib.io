@@ -8,7 +8,6 @@ Fib recursive := method(n,
   )
 
 Fib iterative := method(n, 
-    // TODO: Stuff
     x := 0
     y := 1
     for(i, 0, n - 1, 
