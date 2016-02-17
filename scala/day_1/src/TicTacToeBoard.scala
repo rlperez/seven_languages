@@ -1,7 +1,4 @@
 class TicTacToeBoard {
-  val leftToRightIndices = List(0, 3, 9)
-  val rightToLeftIndices = List(2, 4, 6)
-
   val board = Array.fill(3, 3) {
     Symbol.BLANK
   }
